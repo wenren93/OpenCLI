@@ -1,5 +1,5 @@
 import { cli, Strategy } from '@jackwener/opencli/registry';
-import { getPostDataJs } from './utils.js';
+import { getPostDataJs, requireJikeIdentity } from './utils.js';
 /**
  * 即刻首页动态流适配器
  *
@@ -22,6 +22,7 @@ cli({
         const limit = kwargs.limit || 20;
         // 1. 导航到即刻首页，等待 SPA 重定向到 /following
         await page.goto('https://web.okjike.com');
+        await requireJikeIdentity(page);
         await page.wait({ selector: '[class*="_post_"]', timeout: 10 });
 
         // 2. 提取当前可见帖子（单次快照）
