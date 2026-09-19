@@ -25,3 +25,6 @@ docs/.vitepress/cache
 *.db
 autoresearch/results/
 autoresearch-results.tsv
+
+# Jike feed report output (generated HTML)
+scripts/output/
